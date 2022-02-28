@@ -1,38 +1,133 @@
-.App {
-  text-align: center;
+* {
+  font-family: "Exo", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  background-color: #171719;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-container {
+  width: 80%;
+  margin: auto;
+  background-color: #1f2023;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logo-text {
+  font-weight: 400;
+}
+
+/* HEADER CSS */
+.header {
+  border-bottom: solid 2px #ff4655;
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+}
+
+.btn-area {
+  display: flex;
+  align-items: center;
+}
+
+.collection-btn {
+  margin: 0px 40px;
+}
+
+.login-btn {
+  background-color: #ff4655;
+  padding: 5%;
+  border-radius: 8%;
+  box-shadow: rgba(145, 21, 21, 0.596) 1.95px 1.95px 2.6px;
+}
+
+/* CSS FILTER PART (HOME PAGE) */
+
+.filter-part {
+  display: flex;
+  align-items: center;
   flex-direction: column;
+  margin-bottom: 30px;
+}
+.logo-img {
+  width: 10%;
+  margin-right: 5px;
+}
+.logo-container {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.big-logo {
+  font-weight: 400;
+  font-size: 300%;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 3px rgb(197, 197, 197);
+}
+.undeline-text {
+  font-size: 80%;
+  text-align: center;
+}
+.home-input {
+  width: 30%;
+  padding: 1%;
+  position: relative;
+  margin-bottom: 10px;
+}
+.loupe {
+  color: #1f2023;
+  position: absolute;
+  z-index: 1;
+  top: 158px;
+  right: 715px;
+  font-size: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+/* CSS CARD OF GAMES (HOME PAGE) */
+
+.game-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.game-card {
+  width: 18%;
+  height: 22%;
+  border-radius: 20%;
+  position: relative;
+  margin: 20px 10px;
+}
+.game-card-image {
+  object-fit: contain;
+  border-radius: 10%;
+  width: 100%;
+}
+
+.game-card-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 80%;
+  color: #fff;
+  font-weight: lighter;
+  text-shadow: 1px 1px 2px #777;
+  z-index: 1;
+}
+/* CSS FOOTER */
+.footer {
+  font-size: 70%;
+  text-align: end;
+  margin-top: 20px;
+}
+.footer-link {
+  text-decoration: underline;
+  color: #fff;
 }
