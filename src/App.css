@@ -1,5 +1,6 @@
 * {
   font-family: "Exo", sans-serif;
+  box-sizing: border-box;
 }
 
 .app {
@@ -23,22 +24,27 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+.header-logo {
+  width: 5%;
 }
 
-.logo-container {
+.logo-header-container {
   display: flex;
   align-items: center;
-  margin-left: 40px;
 }
 
 .btn-area {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .collection-btn {
   margin: 0px 40px;
+  white-space: nowrap;
 }
 
 .login-btn {
@@ -55,6 +61,7 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 30px;
+  position: relative;
 }
 .logo-img {
   width: 10%;
@@ -75,18 +82,22 @@
   font-size: 80%;
   text-align: center;
 }
-.home-input {
+.search-input {
   width: 30%;
-  padding: 1%;
   position: relative;
+}
+
+.search-input input {
+  width: 100%;
+  padding: 15px;
   margin-bottom: 10px;
 }
 .loupe {
   color: #1f2023;
   position: absolute;
   z-index: 1;
-  top: 158px;
-  right: 715px;
+  top: 15px;
+  right: 15px;
   font-size: 20px;
 }
 
@@ -100,15 +111,17 @@
 
 .game-card {
   width: 18%;
-  height: 22%;
+  height: 300px;
+
   border-radius: 20%;
   position: relative;
   margin: 20px 10px;
 }
 .game-card-image {
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 10%;
   width: 100%;
+  height: 100%;
 }
 
 .game-card-text {

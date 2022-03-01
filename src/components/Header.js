@@ -1,15 +1,16 @@
 import React from "react";
+import GamepadLogo from "../img/gampad-logo.png";
 
 export default function Header() {
   return (
     <div className="header">
-      <div className="logo-container">
-        <img src="" />
+      <span className="logo-header-container">
+        <img className="header-logo" src={GamepadLogo} />
         <h1 className="logo-text">Gamepad</h1>
-      </div>
+      </span>
       <div className="btn-area">
-        <p className="collection-btn">My Collection</p>
-        <p className="login-btn">Login</p>
+        <span className="collection-btn">My Collection</span>
+        <span className="login-btn">Login</span>
       </div>
     </div>
   );
