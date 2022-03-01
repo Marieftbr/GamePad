@@ -1,11 +1,15 @@
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faAngleRight,
+  faAngleLeft
+} from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-library.add(faMagnifyingGlass);
+library.add(faMagnifyingGlass, faAngleRight, faAngleLeft);
 
 function App() {
   return (

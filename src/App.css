@@ -6,6 +6,7 @@
 .app {
   background-color: #171719;
   color: #fff;
+  min-height: 100vh;
 }
 
 .app-container {
@@ -101,6 +102,20 @@
   font-size: 20px;
 }
 
+.text-game-result {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.italic-search {
+  font-style: italic;
+  text-align: center;
+}
+.total-search {
+  font-size: 19px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 /* CSS CARD OF GAMES (HOME PAGE) */
 
 .game-card-container {
@@ -143,4 +158,20 @@
 .footer-link {
   text-decoration: underline;
   color: #fff;
+}
+
+/* CSS PAGINATION*/
+.btn-pagination {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  background-color: #1f2023;
+  border: none;
+  padding: 15px;
+}
+.active {
+  background-color: #ff4655;
+  padding: 15px;
+  border-radius: 8%;
+  border: none;
 }

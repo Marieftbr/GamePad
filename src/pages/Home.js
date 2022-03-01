@@ -8,18 +8,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PlatformSelect from "../components/PlatformSelect";
 import GenreSelect from "../components/GenreSelect";
 import client from "../api";
+import Pagination from "../components/Pagination";
 
 export default function Home() {
   const [games, setGames] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
 
   const [selectedPlatform, setSelectedPlatform] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
 
   const fetchListGames = async () => {
-    const query = {};
+    setIsLoading(true);
+    const query = { page };
 
     if (search) {
       query.search = search;
@@ -41,11 +44,9 @@ export default function Home() {
 
   useEffect(() => {
     fetchListGames();
-  }, [search, selectedPlatform, selectedGenre]);
+  }, [search, selectedPlatform, selectedGenre, page]);
 
-  return isLoading ? (
-    <div>En cours de chargement...</div>
-  ) : (
+  return (
     <div>
       <div className="filter-part">
         <div className="logo-container">
@@ -61,14 +62,20 @@ export default function Home() {
             className="home-input"
             type="text"
             value={search}
-            onChange={(event) => setSearch(event.target.value)}
+            onChange={(event) => {
+              setSearch(event.target.value);
+              setPage(1);
+            }}
           />
         </div>
         {search ? (
           <div>
             <div>
-              <p className="undeline-text">search result for "{search}"</p>
-              <p className="undeline-text">{total} games</p>
+              <p className="text-game-result">
+                search result for "
+                <span className="italic-search">{search}</span> "
+              </p>
+              <p className="total-search">{total} games</p>
             </div>
             <div>
               <PlatformSelect
@@ -89,11 +96,22 @@ export default function Home() {
           <p className="undeline-text">search {total} games</p>
         )}
       </div>
-      <div className="game-card-container">
-        {games.map((game, index) => {
-          return <CardGame key={index} game={game} />;
-        })}
-      </div>
+      {isLoading ? (
+        <div>En cours de chargement...</div>
+      ) : (
+        <div>
+          <div className="game-card-container">
+            {games.map((game, index) => {
+              return <CardGame key={index} game={game} />;
+            })}
+            <Pagination
+              page={page}
+              setPage={setPage}
+              lastPage={Math.ceil(total / 20)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
