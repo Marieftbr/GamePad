@@ -1,5 +1,4 @@
 import React from "react";
-// import axios from "axios";
 import { useState, useEffect } from "react";
 import CardGame from "../components/CardGame";
 import GamepadLogo from "../img/gampad-logo.png";
@@ -9,16 +8,26 @@ import PlatformSelect from "../components/PlatformSelect";
 import GenreSelect from "../components/GenreSelect";
 import client from "../api";
 import Pagination from "../components/Pagination";
+import { useSearchParams } from "react-router-dom";
+import SortSelect from "../components/SortSelect";
 
 export default function Home() {
-  const [games, setGames] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(searchParams.get("search") || "");
   const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(1);
 
-  const [selectedPlatform, setSelectedPlatform] = useState("");
-  const [selectedGenre, setSelectedGenre] = useState("");
+  const [page, setPage] = useState(
+    searchParams.get("page") ? parseInt(searchParams.get("page")) : 1
+  );
+  const [ordering, setOrdering] = useState(searchParams.get("ordering") || "");
+  const [selectedPlatform, setSelectedPlatform] = useState(
+    searchParams.get("platforms") || ""
+  );
+  const [selectedGenre, setSelectedGenre] = useState(
+    searchParams.get("genre") || ""
+  );
 
   const fetchListGames = async () => {
     setIsLoading(true);
@@ -33,9 +42,14 @@ export default function Home() {
     if (selectedGenre) {
       query.genres = selectedGenre;
     }
+    if (ordering) {
+      query.ordering = ordering;
+    }
+
+    setSearchParams(query);
 
     const response = await client.get("/games", {
-      params: query
+      params: query,
     });
     setGames(response.data.games);
     setTotal(response.data.total);
@@ -44,7 +58,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchListGames();
-  }, [search, selectedPlatform, selectedGenre, page]);
+  }, [search, page]);
 
   return (
     <div>
@@ -90,6 +104,13 @@ export default function Home() {
                   setSelectedGenre(event.target.value);
                 }}
               />
+              <SortSelect
+                value={ordering}
+                onChange={(event) => {
+                  setOrdering(event.target.value);
+                }}
+              />
+              <button onClick={() => fetchListGames()}>GO</button>
             </div>
           </div>
         ) : (

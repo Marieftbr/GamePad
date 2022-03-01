@@ -5,7 +5,7 @@ export default function GamePadSelect(props) {
     <span>
       <label>{props.label}</label>
       <select value={props.value} onChange={props.onChange}>
-        <option value=""> All</option>
+        <option value="">{props.defaultValue || "All"}</option>
         {props.items.map((item) => {
           return (
             <option key={item.id} value={item.id}>
