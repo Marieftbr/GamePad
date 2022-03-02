@@ -4,12 +4,25 @@ import Home from "./pages/Home";
 import {
   faMagnifyingGlass,
   faAngleRight,
-  faAngleLeft
+  faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faBookmark,
+  faMessage,
+} from "@fortawesome/free-regular-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-library.add(faMagnifyingGlass, faAngleRight, faAngleLeft);
+import Login from "./pages/Login";
+library.add(
+  faMagnifyingGlass,
+  faAngleRight,
+  faAngleLeft,
+  faUser,
+  faBookmark,
+  faMessage
+);
 
 function App() {
   return (
@@ -20,6 +33,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />}></Route>
           </Routes>
           <Footer />
         </div>
