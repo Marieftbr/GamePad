@@ -13,14 +13,12 @@ export default function SortSelect(props) {
   ];
 
   return (
-    <span>
-      <GamePadSelect
-        label="Sort by:"
-        defaultValue="Default"
-        items={items}
-        value={props.value}
-        onChange={props.onChange}
-      />
-    </span>
+    <GamePadSelect
+      label="Sort by:"
+      defaultValue="Default"
+      items={items}
+      value={props.value}
+      onChange={props.onChange}
+    />
   );
 }

@@ -83,34 +83,43 @@ export default function Home() {
           />
         </div>
         {search ? (
-          <div>
+          <div className="full-width">
             <div>
               <p className="text-game-result">
                 search result for "
-                <span className="italic-search">{search}</span> "
+                <span className="italic-search underline-red">{search}</span> "
               </p>
               <p className="total-search">{total} games</p>
             </div>
-            <div>
-              <PlatformSelect
-                value={selectedPlatform}
-                onChange={(event) => {
-                  setSelectedPlatform(event.target.value);
-                }}
-              />
-              <GenreSelect
-                value={selectedGenre}
-                onChange={(event) => {
-                  setSelectedGenre(event.target.value);
-                }}
-              />
-              <SortSelect
-                value={ordering}
-                onChange={(event) => {
-                  setOrdering(event.target.value);
-                }}
-              />
-              <button onClick={() => fetchListGames()}>GO</button>
+            <div className="btn-wrapper">
+              <div className="btn-left">
+                <PlatformSelect
+                  value={selectedPlatform}
+                  onChange={(event) => {
+                    setSelectedPlatform(event.target.value);
+                  }}
+                />
+                <GenreSelect
+                  value={selectedGenre}
+                  onChange={(event) => {
+                    setSelectedGenre(event.target.value);
+                  }}
+                />
+              </div>
+              <div className="btn-right">
+                <SortSelect
+                  value={ordering}
+                  onChange={(event) => {
+                    setOrdering(event.target.value);
+                  }}
+                />
+                <button
+                  onClick={() => fetchListGames()}
+                  className="filters-btn"
+                >
+                  GO Filters
+                </button>
+              </div>
             </div>
           </div>
         ) : (

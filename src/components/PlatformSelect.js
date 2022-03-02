@@ -16,13 +16,11 @@ export default function PlatformSelect(props) {
   }, []);
 
   return (
-    <span>
-      <GamePadSelect
-        label="Platform:"
-        items={platforms}
-        value={props.value}
-        onChange={props.onChange}
-      />
-    </span>
+    <GamePadSelect
+      label="Platform:"
+      items={platforms}
+      value={props.value}
+      onChange={props.onChange}
+    />
   );
 }

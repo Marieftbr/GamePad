@@ -105,6 +105,7 @@
 .text-game-result {
   font-size: 36px;
   margin-bottom: 10px;
+  text-align: center;
 }
 .italic-search {
   font-style: italic;
@@ -116,6 +117,47 @@
   margin-bottom: 40px;
 }
 
+.btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filters-btn {
+  background-color: #ff4655;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 8px 10px;
+  margin: 0px 10px;
+}
+
+.gamepad-select {
+  background-color: #404040;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 5px;
+  margin: 0px 10px;
+}
+
+.gamepad-select select {
+  background: #404040;
+  border-radius: 5px;
+  font-size: 1.05em;
+  color: inherit;
+  border: none;
+}
 /* CSS CARD OF GAMES (HOME PAGE) */
 
 .game-card-container {
@@ -174,4 +216,26 @@
   padding: 15px;
   border-radius: 8%;
   border: none;
+}
+
+/* CSS UTILS */
+.full-width {
+  width: 100%;
+}
+
+.underline-red {
+  position: relative;
+  z-index: 2;
+}
+
+.underline-red:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  height: 5px;
+  width: 50%;
+  bottom: 20%;
+  left: 0;
+  transform: skew(-45deg, 0deg);
+  background-color: #ff4655;
 }

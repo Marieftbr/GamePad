@@ -16,13 +16,11 @@ export default function GenreSelect(props) {
   }, []);
 
   return (
-    <span>
-      <GamePadSelect
-        label="Genres:"
-        items={genres}
-        value={props.value}
-        onChange={props.onChange}
-      />
-    </span>
+    <GamePadSelect
+      label="Genres:"
+      items={genres}
+      value={props.value}
+      onChange={props.onChange}
+    />
   );
 }

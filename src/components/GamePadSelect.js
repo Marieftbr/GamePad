@@ -2,7 +2,7 @@ import React from "react";
 
 export default function GamePadSelect(props) {
   return (
-    <span>
+    <div className="gamepad-select">
       <label>{props.label}</label>
       <select value={props.value} onChange={props.onChange}>
         <option value="">{props.defaultValue || "All"}</option>
@@ -14,6 +14,6 @@ export default function GamePadSelect(props) {
           );
         })}
       </select>
-    </span>
+    </div>
   );
 }
