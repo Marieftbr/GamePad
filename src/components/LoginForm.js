@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import GamepadLogo from "../img/gampad-logo.png";
 import React from "react";
 
-export default function GamePadForm() {
+export default function LoginForm() {
   return (
     <div className="login-wrapper">
       <div className="part-left">

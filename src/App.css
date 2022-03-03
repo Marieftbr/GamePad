@@ -253,7 +253,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #333436;
+  background: rgb(14, 14, 14);
+  background: linear-gradient(
+    0deg,
+    rgba(14, 14, 14, 1) 0%,
+    rgba(51, 52, 54, 1) 100%
+  );
   width: 400px;
   height: 450px;
   padding: 20px;
@@ -266,7 +271,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #333436;
+  background: rgb(14, 14, 14);
+  background: linear-gradient(
+    180deg,
+    rgba(14, 14, 14, 1) 0%,
+    rgba(51, 52, 54, 1) 100%
+  );
   width: 400px;
   height: 450px;
   padding: 20px;
@@ -297,6 +307,7 @@
   margin-bottom: 25px;
   font-size: 150%;
   font-weight: 300;
+  text-align: left;
 }
 .text {
   font-size: 80%;
@@ -305,7 +316,8 @@
 }
 
 .part-right input[type="email"],
-.part-right input[type="password"] {
+.part-right input[type="password"],
+.part-right input[type="text"] {
   padding: 8px;
   border-radius: 5px;
   border: none;
@@ -337,4 +349,33 @@
   flex-direction: column;
   align-items: start;
   justify-content: flex-start;
+}
+
+.passwords-wrapper {
+  display: flex;
+}
+
+.space-passwords {
+  margin-right: 5px;
+  padding-right: 5px;
+}
+.part-right input[name="password"] {
+  margin-right: 5px;
+}
+input[type="file"] {
+  display: none;
+}
+.inputfile {
+  background-color: #fff;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 50%;
+  color: #777;
+  font-size: 80%;
+}
+.icon-upload {
+  padding-left: 10px;
 }
