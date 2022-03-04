@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import GamepadLogo from "../img/gampad-logo.png";
 import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import client from "../api";
+import Cookies from "js-cookie";
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
   const inputRef = React.createRef();
 
   const [username, setUsername] = useState("");
@@ -22,7 +22,12 @@ export default function SignUpForm() {
     formData.append("password", password);
 
     const response = client.post("/user/create", formData);
-    console.log(response);
+    Cookies.set("token", response.data.token);
+    props.setToken(response.data.token);
+    Cookies.set("name", response.data.name);
+    props.setUserName(response.data.name);
+    Cookies.set("picture", response.data.picture);
+    props.setUserPicture(response.data.picture);
   };
 
   const submitData = (event) => {
