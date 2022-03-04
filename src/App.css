@@ -54,6 +54,16 @@
   border-radius: 8%;
   box-shadow: rgba(145, 21, 21, 0.596) 1.95px 1.95px 2.6px;
 }
+.user-infos-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.header-profile-picture {
+  width: 6%;
+  border-radius: 50%;
+  margin: 0px 10px;
+}
 
 /* CSS FILTER PART (HOME PAGE) */
 
