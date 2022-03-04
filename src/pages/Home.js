@@ -58,6 +58,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchListGames();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, page]);
 
   return (
