@@ -17,6 +17,9 @@ import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import { useState } from "react";
+import Cookies from "js-cookie";
+import MyCollection from "./pages/MyCollection";
 library.add(
   faMagnifyingGlass,
   faAngleRight,
@@ -28,16 +31,39 @@ library.add(
 );
 
 function App() {
+  const [token, setToken] = useState(Cookies.get("token") || "");
+  const [userName, setUserName] = useState(Cookies.get("name") || "");
+  const [userPicture, setUserPicture] = useState(Cookies.get("picture") || "");
+
   return (
     <Router>
       <div className="app">
         <div className="app-container">
-          <Header />
+          <Header token={token} userName={userName} userPicture={userPicture} />
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/signup" element={<SignUp />}></Route>
+            <Route
+              path="/login"
+              element={
+                <Login
+                  setToken={setToken}
+                  setUserName={setUserName}
+                  setUserPicture={setUserPicture}
+                />
+              }
+            ></Route>
+            <Route
+              path="/signup"
+              element={
+                <SignUp
+                  setToken={setToken}
+                  setUserName={setUserName}
+                  setUserPicture={setUserPicture}
+                />
+              }
+            ></Route>
+            <Route path="/myCollection" element={<MyCollection />} />
           </Routes>
           <Footer />
         </div>
