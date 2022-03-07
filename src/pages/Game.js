@@ -7,28 +7,32 @@ import CardGame from "../components/CardGame";
 
 export default function Game() {
   const { id } = useParams();
-  console.log(id);
   const [data, setData] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const [sameGames, setSameGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const fetchReviews = async () => {
+    const response = await axios.get(`http://localhost:3000/reviews/${id}/`);
+    setReviews(response.data);
+  };
 
   const fetchGamesSuggested = async () => {
     const response = await axios.get(
       `http://localhost:3000/games/${id}/suggested`
     );
-    console.log(response.data);
     setSameGames(response.data.games);
   };
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`http://localhost:3000/game/${id}`);
-      console.log(response.data);
       setData(response.data.game);
       setIsLoading(false);
     };
     fetchData();
     fetchGamesSuggested();
+    fetchReviews();
   }, [id]);
 
   return isLoading ? (
@@ -121,7 +125,7 @@ export default function Game() {
       <div className="reviews-part">
         <div className="position-parent">
           <h2 className="second-game-title">Reviews</h2>
-          <span className="sub-text">{data.reviews_text_count}</span>
+          <span className="sub-text">{reviews.length}</span>
         </div>
       </div>
     </div>
