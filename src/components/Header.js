@@ -1,9 +1,11 @@
 import React from "react";
 import GamepadLogo from "../img/gampad-logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useHref } from "react-router-dom";
 
 export default function Header(props) {
   const navigate = useNavigate();
+  const loginPath = useHref("/login");
+  const collectionPath = useHref("/myCollection");
   return (
     <div className="header">
       <span className="logo-header-container">
@@ -20,12 +22,9 @@ export default function Header(props) {
       <div className="btn-area">
         {props.token ? (
           <span className="user-infos-container">
-            <span
-              className="collection-btn"
-              onClick={() => navigate("/myCollection")}
-            >
+            <a href={collectionPath} className="collection-btn">
               My Collection
-            </span>
+            </a>
             <p>{props.userName}</p>
             <img
               className="header-profile-picture"
@@ -34,14 +33,14 @@ export default function Header(props) {
             />
           </span>
         ) : (
-          <span>
-            <span className="collection-btn" onClick={() => navigate("/login")}>
+          <>
+            <a href={loginPath} className="collection-btn">
               My Collection
-            </span>
-            <span className="login-btn" onClick={() => navigate("/login")}>
+            </a>
+            <a href={loginPath} className="login-btn">
               Login
-            </span>
-          </span>
+            </a>
+          </>
         )}
       </div>
     </div>

@@ -53,6 +53,8 @@
   padding: 5%;
   border-radius: 8%;
   box-shadow: rgba(145, 21, 21, 0.596) 1.95px 1.95px 2.6px;
+  border: none;
+  color: #fff;
 }
 .user-infos-container {
   display: flex;
@@ -388,4 +390,95 @@ input[type="file"] {
 }
 .icon-upload {
   padding-left: 10px;
+}
+/* CSS GAME PAGE */
+.infos-game {
+  display: flex;
+}
+.picture-game-wrapper {
+  width: 50%;
+  padding-top: 5px;
+  padding-right: 20px;
+}
+.game-picture {
+  width: 100%;
+  border-radius: 15px;
+}
+.text-infos {
+  width: 50%;
+}
+.btns {
+  display: flex;
+  flex-direction: row;
+}
+.btn-game-page {
+  background: none;
+  border-radius: 5px;
+  border: solid #fff 1px;
+  color: #fff;
+  padding: 5px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  width: 17%;
+}
+
+.lines {
+  display: flex;
+  width: 100%;
+}
+.platforms,
+.age-rating,
+.genres,
+.released-date,
+.developer,
+.publisher {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 10px;
+}
+h3 {
+  opacity: 0.5;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+span {
+  font-size: 80%;
+}
+.game-title {
+  font-size: 35px;
+  font-weight: 400;
+}
+.second-game-title {
+  font-size: 26px;
+  font-weight: 400;
+  text-align: center;
+}
+.position-parent {
+  position: relative;
+}
+.sub-text {
+  position: absolute;
+  top: 0;
+  right: 695px;
+  font-size: 70%;
+}
+
+.same-games-wrapper {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.same-games-wrapper .game-card {
+  width: 20vw;
+  min-width: 20vw;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
 }

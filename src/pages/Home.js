@@ -134,13 +134,7 @@ export default function Home() {
         <div>
           <div className="game-card-container">
             {games.map((game, index) => {
-              return (
-                <span key={index}>
-                  <Link to={`/game/${game.id}`}>
-                    <CardGame game={game} />
-                  </Link>
-                </span>
-              );
+              return <CardGame game={game} key={index} />;
             })}
             <Pagination
               page={page}
