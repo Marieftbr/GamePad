@@ -10,6 +10,7 @@ import client from "../api";
 import Pagination from "../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 import SortSelect from "../components/SortSelect";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -133,7 +134,13 @@ export default function Home() {
         <div>
           <div className="game-card-container">
             {games.map((game, index) => {
-              return <CardGame key={index} game={game} />;
+              return (
+                <span key={index}>
+                  <Link to={`/game/${game.id}`}>
+                    <CardGame game={game} />
+                  </Link>
+                </span>
+              );
             })}
             <Pagination
               page={page}

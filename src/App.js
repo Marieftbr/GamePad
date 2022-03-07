@@ -20,6 +20,7 @@ import SignUp from "./pages/SignUp";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import MyCollection from "./pages/MyCollection";
+import Game from "./pages/Game";
 library.add(
   faMagnifyingGlass,
   faAngleRight,
@@ -63,6 +64,7 @@ function App() {
                 />
               }
             ></Route>
+            <Route path="/game/:id" element={<Game />} />
             <Route path="/myCollection" element={<MyCollection />} />
           </Routes>
           <Footer />
