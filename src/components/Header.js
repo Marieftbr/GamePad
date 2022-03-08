@@ -1,11 +1,22 @@
 import React from "react";
 import GamepadLogo from "../img/gampad-logo.png";
 import { useNavigate, useHref } from "react-router-dom";
+import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
+import Cookies from "js-cookie";
 
 export default function Header(props) {
   const navigate = useNavigate();
   const loginPath = useHref("/login");
   const collectionPath = useHref("/myCollection");
+  const token = props.token;
+  const username = props.userName;
+  const userpicture = props.userPicture;
+
+  const deleteCookies = () => {
+    Cookies.remove(token);
+    Cookies.remove(username);
+    Cookies.remove(userpicture);
+  };
   return (
     <div className="header">
       <span className="logo-header-container">
@@ -31,6 +42,7 @@ export default function Header(props) {
               src={props.userPicture}
               alt="user"
             />
+            <button onClick={deleteCookies}>Disconnect</button>
           </span>
         ) : (
           <>

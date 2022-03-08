@@ -1,33 +1,36 @@
-import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardGame from "../components/CardGame";
 import ReviewsCard from "../components/ReviewsCard";
+import { useHref } from "react-router-dom";
+import client from "../api";
 
-export default function Game() {
+export default function Game(props) {
   const { id } = useParams();
+  const token = props.token;
+  const reviewPath = useHref(`/addReview/${id}`);
+  const collectionPath = useHref(`/myCollection/${id}`);
+  const loginPath = useHref(`/login`);
   const [data, setData] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [sameGames, setSameGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchReviews = async () => {
-    const response = await axios.get(`http://localhost:3000/reviews/${id}/`);
+    const response = await client.get(`/reviews/${id}/`);
     setReviews(response.data);
   };
 
   const fetchGamesSuggested = async () => {
-    const response = await axios.get(
-      `http://localhost:3000/games/${id}/suggested`
-    );
+    const response = await client.get(`/games/${id}/suggested`);
     setSameGames(response.data.games);
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:3000/game/${id}`);
+      const response = await client.get(`/game/${id}`);
       setData(response.data.game);
       setIsLoading(false);
     };
@@ -50,22 +53,42 @@ export default function Game() {
           />
         </div>
         <div className="text-infos">
-          <div className="btns">
-            <button className="btn-game-page">
-              Save to Collection{" "}
-              <FontAwesomeIcon
-                className="icon-list fa-xl"
-                icon="fa-regular fa-bookmark"
-              />
-            </button>
-            <button className="btn-game-page">
-              Add a review
-              <FontAwesomeIcon
-                className="icon-list fa-xl"
-                icon=" fa-regular fa-message"
-              />
-            </button>
-          </div>
+          {token ? (
+            <div className="btns">
+              <a href={collectionPath} className="btn-game-page">
+                Save to <span className="green">Collection</span>
+                <FontAwesomeIcon
+                  className="icon-list fa-xl"
+                  icon="fa-regular fa-bookmark"
+                />
+              </a>
+              <a href={reviewPath} className="btn-game-page">
+                Add a review
+                <FontAwesomeIcon
+                  className="icon-list fa-xl"
+                  icon=" fa-regular fa-message"
+                />
+              </a>
+            </div>
+          ) : (
+            <div className="btns">
+              <a href={loginPath} className="btn-game-page">
+                Save to Collection
+                <FontAwesomeIcon
+                  className="icon-list fa-xl"
+                  icon="fa-regular fa-bookmark"
+                />
+              </a>
+              <a href={loginPath} className="btn-game-page" disabled>
+                Add a review
+                <FontAwesomeIcon
+                  className="icon-list fa-xl"
+                  icon=" fa-regular fa-message"
+                />
+              </a>
+            </div>
+          )}
+
           <div className="lines">
             <div className="platforms">
               <h3>Platforms</h3>

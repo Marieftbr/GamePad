@@ -21,6 +21,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import MyCollection from "./pages/MyCollection";
 import Game from "./pages/Game";
+import Review from "./pages/Review";
 library.add(
   faMagnifyingGlass,
   faAngleRight,
@@ -64,8 +65,9 @@ function App() {
                 />
               }
             ></Route>
-            <Route path="/game/:id" element={<Game />} />
+            <Route path="/game/:id" element={<Game token={token} />} />
             <Route path="/myCollection" element={<MyCollection />} />
+            <Route path="/addReview/:id" element={<Review token={token} />} />
           </Routes>
           <Footer />
         </div>
