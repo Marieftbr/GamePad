@@ -454,6 +454,7 @@ span {
   font-size: 26px;
   font-weight: 400;
   text-align: center;
+  margin-top: 40px;
 }
 .position-parent {
   position: relative;
@@ -481,4 +482,46 @@ a {
 
 a:visited {
   color: white;
+}
+/* CSS REVIEWS FOR GAME */
+.user-infos {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.review-card {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  height: 180px;
+  margin: auto;
+}
+
+.margin {
+  margin: 25px 20px;
+}
+
+.review-profile-picture {
+  width: 7%;
+  border-radius: 50%;
+  margin: 0px 10px;
+}
+
+.review-date {
+  font-size: 80%;
+  opacity: 0.5;
+}
+.review-username {
+  font-weight: 200;
+}
+.review-title {
+  font-weight: 400;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+.review-comment {
+  font-weight: 200;
+  font-size: 90%;
+  line-height: 150%;
 }

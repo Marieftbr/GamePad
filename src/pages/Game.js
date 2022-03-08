@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardGame from "../components/CardGame";
+import ReviewsCard from "../components/ReviewsCard";
 
 export default function Game() {
   const { id } = useParams();
@@ -126,6 +127,18 @@ export default function Game() {
         <div className="position-parent">
           <h2 className="second-game-title">Reviews</h2>
           <span className="sub-text">{reviews.length}</span>
+          {reviews.map((review, index) => {
+            return (
+              <ReviewsCard
+                key={index}
+                title={review.title}
+                comment={review.comment}
+                userPicture={review.user.picture_url}
+                date={review.createdAt}
+                username={review.user.name}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
