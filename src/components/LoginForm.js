@@ -25,9 +25,10 @@ export default function LoginForm(props) {
     props.setUserPicture(response.data.picture);
   };
 
-  const submitData = (event) => {
+  const submitData = async (event) => {
     event.preventDefault();
-    sendData();
+    await sendData();
+    navigate("/");
   };
 
   return (

@@ -1,21 +1,23 @@
 import React from "react";
 import GamepadLogo from "../img/gampad-logo.png";
 import { useNavigate, useHref } from "react-router-dom";
-import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
+import { Menu, MenuItem } from "@szhsin/react-menu";
+import "@szhsin/react-menu/dist/index.css";
+import "@szhsin/react-menu/dist/transitions/slide.css";
 import Cookies from "js-cookie";
+import "@szhsin/react-menu/dist/theme-dark.css";
 
 export default function Header(props) {
   const navigate = useNavigate();
   const loginPath = useHref("/login");
   const collectionPath = useHref("/myCollection");
-  const token = props.token;
-  const username = props.userName;
-  const userpicture = props.userPicture;
+  const [isDark, setDark] = React.useState(true);
 
   const deleteCookies = () => {
-    Cookies.remove(token);
-    Cookies.remove(username);
-    Cookies.remove(userpicture);
+    Cookies.remove("token");
+    Cookies.remove("username");
+    Cookies.remove("userpicture");
+    window.location.reload();
   };
   return (
     <div className="header">
@@ -37,12 +39,20 @@ export default function Header(props) {
               My Collection
             </a>
             <p>{props.userName}</p>
-            <img
-              className="header-profile-picture"
-              src={props.userPicture}
-              alt="user"
-            />
-            <button onClick={deleteCookies}>Disconnect</button>
+            <Menu
+              theming={isDark ? "dark" : undefined}
+              menuButton={
+                <img
+                  className="header-profile-picture"
+                  src={props.userPicture}
+                  alt="user"
+                />
+              }
+            >
+              <MenuItem className="szh-menu__item" onClick={deleteCookies}>
+                Disconnect
+              </MenuItem>
+            </Menu>
           </span>
         ) : (
           <>
