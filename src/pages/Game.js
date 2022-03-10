@@ -6,6 +6,7 @@ import CardGame from "../components/CardGame";
 import ReviewsCard from "../components/ReviewsCard";
 import { useHref } from "react-router-dom";
 import client from "../api";
+import { useNavigate } from "react-router-dom";
 
 export default function Game(props) {
   const { id } = useParams();
@@ -16,7 +17,18 @@ export default function Game(props) {
   const [data, setData] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [sameGames, setSameGames] = useState([]);
+  const [myCollection, setMyCollection] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const addGameToCollection = async () => {
+    const response = await client.post("/addToMyCollection", {
+      token,
+      id,
+    });
+    setMyCollection(response.data);
+    navigate(collectionPath);
+  };
 
   const fetchReviews = async () => {
     const response = await client.get(`/reviews/${id}/`);
@@ -55,13 +67,13 @@ export default function Game(props) {
         <div className="text-infos">
           {token ? (
             <div className="btns">
-              <a href={collectionPath} className="btn-game-page">
+              <button onClick={addGameToCollection()} className="btn-game-page">
                 Save to <span className="green">Collection</span>
                 <FontAwesomeIcon
                   className="icon-list fa-xl"
                   icon="fa-regular fa-bookmark"
                 />
-              </a>
+              </button>
               <a href={reviewPath} className="btn-game-page">
                 Add a review
                 <FontAwesomeIcon

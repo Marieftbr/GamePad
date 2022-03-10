@@ -66,7 +66,10 @@ function App() {
               }
             ></Route>
             <Route path="/game/:id" element={<Game token={token} />} />
-            <Route path="/myCollection" element={<MyCollection />} />
+            <Route
+              path="/myCollection"
+              element={<MyCollection token={token} />}
+            />
             <Route path="/addReview/:id" element={<Review token={token} />} />
           </Routes>
           <Footer />
