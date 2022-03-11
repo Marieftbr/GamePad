@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import client from "../api";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpForm(props) {
   const inputRef = React.createRef();
@@ -13,21 +14,23 @@ export default function SignUpForm(props) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [picture, setPicture] = useState();
+  const navigate = useNavigate();
 
-  const sendData = () => {
+  const sendData = async () => {
     const formData = new FormData();
     formData.append("name", username);
     formData.append("picture", picture);
     formData.append("email", email);
     formData.append("password", password);
 
-    const response = client.post("/user/create", formData);
+    const response = await client.post("/user/create", formData);
     Cookies.set("token", response.data.token);
     props.setToken(response.data.token);
     Cookies.set("name", response.data.name);
     props.setUserName(response.data.name);
     Cookies.set("picture", response.data.picture);
     props.setUserPicture(response.data.picture);
+    navigate("/");
   };
 
   const submitData = (event) => {

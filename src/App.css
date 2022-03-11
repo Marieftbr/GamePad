@@ -238,6 +238,13 @@
   border: none;
 }
 
+.pagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* CSS UTILS */
 .full-width {
   width: 100%;
@@ -486,6 +493,7 @@ span {
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 a:visited {
@@ -502,7 +510,7 @@ a:visited {
   padding: 20px;
   border-radius: 10px;
   width: 60%;
-  height: 180px;
+  min-height: 180px;
   margin: auto;
 }
 

@@ -35,15 +35,16 @@ export default function Home() {
 
     if (search) {
       query.search = search;
-    }
-    if (selectedPlatform) {
-      query.platforms = selectedPlatform;
-    }
-    if (selectedGenre) {
-      query.genres = selectedGenre;
-    }
-    if (ordering) {
-      query.ordering = ordering;
+
+      if (selectedPlatform) {
+        query.platforms = selectedPlatform;
+      }
+      if (selectedGenre) {
+        query.genres = selectedGenre;
+      }
+      if (ordering) {
+        query.ordering = ordering;
+      }
     }
 
     setSearchParams(query);

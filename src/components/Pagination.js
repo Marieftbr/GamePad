@@ -29,7 +29,7 @@ export default function Pagination(props) {
   let buttons = createPaginationButtons(page, lastPage);
 
   return (
-    <div>
+    <div class="pagination">
       {buttons.map((button, index) => {
         return (
           <button

@@ -186,7 +186,7 @@ export default function Game(props) {
             </div>
             <div className="age-rating">
               <h3>Age rating</h3>
-              {data.esrb_rating.name}
+              {data.esrb_rating ? data.esrb_rating.name : "Unknown"}
             </div>
           </div>
           <div className="about">
