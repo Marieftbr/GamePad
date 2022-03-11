@@ -11,7 +11,6 @@ export default function Header(props) {
   const navigate = useNavigate();
   const loginPath = useHref("/login");
   const collectionPath = useHref("/myCollection");
-  const [isDark, setDark] = React.useState(true);
 
   const deleteCookies = () => {
     Cookies.remove("token");
@@ -40,7 +39,7 @@ export default function Header(props) {
             </a>
             <p>{props.userName}</p>
             <Menu
-              theming={isDark ? "dark" : undefined}
+              theming="dark"
               menuButton={
                 <img
                   className="header-profile-picture"

@@ -10,7 +10,6 @@ import client from "../api";
 import Pagination from "../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 import SortSelect from "../components/SortSelect";
-import { Link } from "react-router-dom";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();

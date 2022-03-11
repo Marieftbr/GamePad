@@ -17,7 +17,6 @@ export default function Game(props) {
   const [data, setData] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [sameGames, setSameGames] = useState([]);
-  const [myCollection, setMyCollection] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [gamesInMyCollection, setGamesInMyCollection] = useState([]);
   const navigate = useNavigate();
@@ -35,7 +34,6 @@ export default function Game(props) {
 
     setGamesInMyCollection(tab);
   };
-  console.log(typeof id);
 
   const removeGame = async () => {
     await client.post(
@@ -53,7 +51,7 @@ export default function Game(props) {
   };
 
   const addGameToCollection = async () => {
-    const response = await client.post(
+    await client.post(
       "/addToMyCollection",
       {
         gameId: id,
@@ -64,7 +62,6 @@ export default function Game(props) {
         },
       }
     );
-    setMyCollection(response.data);
     navigate(collectionPath);
   };
 

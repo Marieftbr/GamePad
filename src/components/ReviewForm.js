@@ -7,7 +7,6 @@ export default function ReviewForm(props) {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
-  console.log(props.token);
 
   const sendData = () => {
     return client.post(
