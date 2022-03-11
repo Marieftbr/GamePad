@@ -12,20 +12,58 @@ export default function Game(props) {
   const { id } = useParams();
   const token = props.token;
   const reviewPath = useHref(`/addReview/${id}`);
-  const collectionPath = useHref(`/myCollection/${id}`);
+  const collectionPath = useHref(`/myCollection`);
   const loginPath = useHref(`/login`);
   const [data, setData] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [sameGames, setSameGames] = useState([]);
   const [myCollection, setMyCollection] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [gamesInMyCollection, setGamesInMyCollection] = useState([]);
   const navigate = useNavigate();
 
-  const addGameToCollection = async () => {
-    const response = await client.post("/addToMyCollection", {
-      token,
-      id,
+  const gameInMyCollection = async () => {
+    const response = await client.get("/myCollection", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
+
+    const tab = response.data.map((game) => {
+      return game.id;
+    });
+
+    setGamesInMyCollection(tab);
+  };
+  console.log(typeof id);
+
+  const removeGame = async () => {
+    await client.post(
+      "/deleteToMyCollection",
+      {
+        id: parseInt(id),
+      },
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    navigate("/myCollection");
+  };
+
+  const addGameToCollection = async () => {
+    const response = await client.post(
+      "/addToMyCollection",
+      {
+        gameId: id,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     setMyCollection(response.data);
     navigate(collectionPath);
   };
@@ -49,6 +87,7 @@ export default function Game(props) {
     fetchData();
     fetchGamesSuggested();
     fetchReviews();
+    gameInMyCollection();
   }, [id]);
 
   return isLoading ? (
@@ -67,13 +106,23 @@ export default function Game(props) {
         <div className="text-infos">
           {token ? (
             <div className="btns">
-              <button onClick={addGameToCollection()} className="btn-game-page">
-                Save to <span className="green">Collection</span>
-                <FontAwesomeIcon
-                  className="icon-list fa-xl"
-                  icon="fa-regular fa-bookmark"
-                />
-              </button>
+              {gamesInMyCollection.includes(parseInt(id)) ? (
+                <button onClick={removeGame} className="btn-game-page">
+                  Remove to Collection
+                  <FontAwesomeIcon
+                    className="icon-list fa-xl"
+                    icon="fa-regular fa-bookmark"
+                  />
+                </button>
+              ) : (
+                <button onClick={addGameToCollection} className="btn-game-page">
+                  Save to <span className="green">Collection</span>
+                  <FontAwesomeIcon
+                    className="icon-list fa-xl"
+                    icon="fa-regular fa-bookmark"
+                  />
+                </button>
+              )}
               <a href={reviewPath} className="btn-game-page">
                 Add a review
                 <FontAwesomeIcon

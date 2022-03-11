@@ -189,7 +189,7 @@
 .game-card {
   width: 18%;
   height: 300px;
-
+  position: relative;
   border-radius: 20%;
   position: relative;
   margin: 20px 10px;
@@ -569,4 +569,12 @@ textarea {
 }
 .green {
   color: green;
+}
+/* CSS COLLECTION PAGE */
+.collection-active {
+  color: #ff4655;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
 }
